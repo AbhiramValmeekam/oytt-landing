@@ -1,0 +1,17 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import { site } from '../config/site.mjs';
+const faqs = [
+  ['How do I add a widget?', 'Touch and hold an empty space on your Android home screen, then choose Widgets. Find OYTT and drag the 4×2 Console or 2×2 Mini onto your screen. Pick White or Black. The exact menu may differ on your phone.'],
+  ['Why does the widget clock show a few seconds after reset?', 'This issue is fixed in the latest version. Update OYTT from Google Play, then try resetting again. If it still happens, email us with your phone model, Android version and OYTT version.'],
+  ['What happens at 23:40?', 'OYTT automatically logs your day at 23:40 in your phone’s local time. You can still log manually until 23:59. After a phone restart, OYTT re-arms the nightly auto-log.'],
+  ['How do coins work?', 'You earn OYTT Coins for logged time, daily streaks, completed to-dos and sharing. Log at least 30 minutes a day to keep your streak. A 25-day streak unlocks partner rewards, subject to availability. Coins are a virtual loyalty feature. They have no cash value and cannot be transferred or exchanged for money.'],
+  ['How do I delete my account?', 'In OYTT, go to Settings → Account → Delete account and confirm. You can also email oytt.official@gmail.com from the Google email you use to sign in, with the subject “Delete my OYTT account”. Email requests are completed within 30 days.'],
+  ['Does it work offline?', 'Yes. Track time and use your daily to-dos offline. OYTT stores your app data on your device and syncs it when you are online again. Google Sign-In needs an internet connection.'],
+  ['Is it free?', 'Yes. OYTT is free. OYTT Pro is coming soon. Any future paid features will have separate terms and use Google Play billing.'],
+];
+---
+<Layout title="Support & FAQ | OYTT" description="Help with OYTT widgets, auto-log, coins, offline tracking and account deletion. Contact oytt.official@gmail.com.">
+  <div class="container service-page"><span class="label">A LITTLE HELP.</span><h1>LET’S SORT<br />IT OUT.</h1><p class="service-intro">A few answers to keep your day moving.</p><div class="faq-list">{faqs.map(([question, answer]) => <details><summary>{question}<Icon name="plus" /></summary><p>{answer}</p></details>)}</div><div class="contact-slab"><div><h2>STILL NEED A HAND?</h2><p>Email us. A real conversation starts there.</p></div><a class="button" href={`mailto:${site.email}`}><Icon name="mail" /> EMAIL OYTT</a></div></div>
+</Layout>

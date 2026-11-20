@@ -1,0 +1,24 @@
+---
+const rows = [ ['WORK', '03:12:00'], ['STUDYING', '01:30:00'], ['GYM', '00:48:00'] ];
+---
+<div class="receipt" role="group" aria-label="Sample OYTT daily receipt">
+  <div class="receipt-wordmark">OYTT</div>
+  <p class="receipt-subtitle">ON YOUR TIME TOO.</p>
+  <div class="receipt-rule"></div>
+  <div class="receipt-row"><span>DAY 001</span><span>MONDAY</span></div>
+  <p class="receipt-section">YOUR TIME</p>
+  {rows.map(([name, time]) => <div class="receipt-row"><span>{name}</span><span>{time}</span></div>)}
+  <div class="receipt-rule"></div>
+  <p class="receipt-section">THE LITTLE THINGS</p>
+  <div class="receipt-row"><span>[x] Read 20 pages</span><span>00:24:00</span></div>
+  <div class="receipt-row"><span>[x] Go for a walk</span><span>00:30:00</span></div>
+  <div class="receipt-rule"></div>
+  <div class="receipt-row"><span>PHONE</span><span>06:24:00</span></div>
+  <div class="receipt-row"><span>LAPTOP</span><span>00:00:00</span></div>
+  <div class="receipt-row receipt-total"><span>TOTAL</span><span>06:24:00</span></div>
+  <div class="receipt-row"><span>OYTT COINS</span><span>+384</span></div>
+  <div class="receipt-rule"></div>
+  <p class="receipt-end">Measurement is the first step<br />towards improvement.</p>
+  <svg class="barcode" viewBox="0 0 230 42" aria-hidden="true">{Array.from({length: 58}, (_, i) => <rect x={i * 4} y="0" width={i % 3 === 0 ? 3 : 1} height="42" fill="currentColor" />)}</svg>
+  <p class="receipt-foot">THANK YOU FOR SHOWING UP.</p>
+</div>

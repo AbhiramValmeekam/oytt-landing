@@ -1,0 +1,27 @@
+---
+const variants = [
+  { theme: 'white', size: 'wide', name: 'CONSOLE', dimensions: '4 × 2' },
+  { theme: 'black', size: 'mini', name: 'MINI', dimensions: '2 × 2' },
+  { theme: 'black', size: 'wide', name: 'CONSOLE', dimensions: '4 × 2' },
+  { theme: 'white', size: 'mini', name: 'MINI', dimensions: '2 × 2' },
+];
+---
+<div class="widgets-stage">
+  <div class="widget-grid">
+    {variants.map(variant => <div class:list={['widget-wrap', `wrap-${variant.size}`]}>
+      <div class:list={['widget', `widget-${variant.theme}`, `widget-${variant.size}`]} data-widget>
+        <div class="widget-top mono"><span>OYTT</span><span><i class="status-dot"></i> <span data-widget-status>IDLE</span></span></div>
+        <div class="widget-main">
+          <div class="widget-task"><span class="widget-dial" aria-hidden="true"><i></i></span><span data-task>WORK</span></div>
+          <span class="widget-time mono" data-time>00:00:00</span>
+        </div>
+        <div class="widget-controls mono">
+          <button type="button" data-action="start" aria-label={`Start or pause timer from ${variant.theme} ${variant.name.toLowerCase()} widget`}><span data-play-icon aria-hidden="true">▶</span> <span data-start-label>START</span></button>
+          <button type="button" data-action="reset" aria-label={`Reset timer from ${variant.theme} ${variant.name.toLowerCase()} widget`}>R</button>
+          <button type="button" data-action="log" aria-label={`Log timer from ${variant.theme} ${variant.name.toLowerCase()} widget`}><i class="lime-dot"></i> LOG</button>
+        </div>
+      </div>
+      <span class="widget-label mono">{variant.name} / {variant.dimensions} / {variant.theme.toUpperCase()}</span>
+    </div>)}
+  </div>
+</div>

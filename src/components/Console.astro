@@ -1,0 +1,30 @@
+---
+const ticks = Array.from({ length: 60 }, (_, index) => index);
+---
+<div class="console" data-console role="group" aria-label="Interactive PT-03 time tracking demo">
+  <div class="console-top mono"><span class="console-brand"><i class="status-dot"></i> OYTT</span><span class="console-model">PT-03 <span class="vents" aria-hidden="true">⋮⋮⋮</span></span></div>
+  <div class="console-body">
+    <div class="dial-cell">
+      <button class="dial" data-dial aria-label="Select task. Current task WORK. Click for next; use left and right arrow keys." type="button">
+        <svg class="dial-ticks" viewBox="0 0 200 200" aria-hidden="true">
+          {ticks.map(index => <line x1="100" y1="7" x2="100" y2={index % 5 === 0 ? '18' : '12'} transform={`rotate(${index * 6} 100 100)`} stroke="currentColor" stroke-width={index % 5 === 0 ? '2' : '1'} />)}
+        </svg>
+        <span class="dial-rings"><span class="dial-disc" data-disc><span class="dial-pip"></span><span class="dial-centre"></span></span></span>
+      </button>
+      <span class="task-name" data-task>WORK</span>
+      <span class="dial-instruction mono">TURN TO SELECT</span>
+    </div>
+    <div class="clock-cell">
+      <span class="record-status mono" data-status><i class="status-dot"></i><span data-status-label>IDLE</span></span>
+      <span class="console-time mono" data-time role="timer" aria-label="Elapsed time">00:00:00</span>
+      <span class="console-caption mono">3-BUTTON CONSOLE</span>
+    </div>
+  </div>
+  <div class="console-bottom">
+    <div class="console-controls">
+      <button class="start-key" data-action="start" type="button" aria-label="Start WORK timer"><span data-play-icon aria-hidden="true">▶</span><span data-start-label>START</span></button>
+      <button class="reset-key mono" data-action="reset" type="button" aria-label="Reset selected task timer">R</button>
+      <button class="log-key mono" data-action="log" type="button"><i class="lime-dot"></i> LOG</button>
+    </div>
+  </div>
+</div>

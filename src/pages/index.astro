@@ -1,0 +1,68 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Console from '../components/Console.astro';
+import Widgets from '../components/Widgets.astro';
+import Receipt from '../components/Receipt.astro';
+import PlayBadge from '../components/PlayBadge.astro';
+import Icon from '../components/Icon.astro';
+import '../styles/landing.css';
+import { site } from '../config/site.mjs';
+const steps = [ ['01', 'TURN', 'Pick a task. Find your focus.'], ['02', 'START', 'One clock. One thing at a time.'], ['03', 'LOG', 'Keep a little proof of your day.'] ];
+const soon = ['Weekly OYTT Wrapped', '1v1 Friend Battles', 'OYTT Pro', 'Chrome extension', 'PT-03 desk console'];
+const software = { '@context': 'https://schema.org', '@type': 'SoftwareApplication', name: 'OYTT (On Your Time Too)', operatingSystem: 'Android', applicationCategory: 'ProductivityApplication', description: 'Tactile time tracking with a rotary dial, home screen widgets, daily to-dos and shareable receipts.', url: site.origin, downloadUrl: site.play, offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' } };
+---
+<Layout title="OYTT — On Your Time Too. Tactile time tracking for Android." description="Turn the dial. Press start. Get a receipt for your day. Meet OYTT: tactile time tracking, Android widgets, daily to-dos, coins and rewards.">
+  <script type="application/ld+json" set:html={JSON.stringify(software)} />
+  <section class="hero container" aria-labelledby="hero-title">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="label">A LITTLE MORE PRESENT.</span>
+        <h1 id="hero-title"><span>ON YOUR</span><span>TIME TOO<span class="accent-period">.</span></span></h1>
+        <p>Tactile time tracking for your phone. Turn the dial. Press start. Get a receipt for your day.</p>
+        <PlayBadge />
+      </div>
+      <div class="hero-product">
+        <Console />
+        <div class="demo-note"><span><i class="demo-dot"></i> TRY THE CONSOLE</span><span data-demo-log>YOUR NEXT LITTLE RITUAL</span></div>
+        <p class="demo-feedback" data-feedback aria-live="polite" aria-atomic="true">Interactive demo. Your time stays in this tab.</p>
+        <noscript><p class="feature-footnote">Enable JavaScript to try the console. The OYTT app is available on Google Play.</p></noscript>
+      </div>
+    </div>
+  </section>
+  <div class="container step-strip" aria-label="How OYTT works">
+    {steps.map(([number, title, description], i) => <div class="step"><span class="step-number mono">{number}</span><div><h2 class="step-title">{title}{i < 2 && <span aria-hidden="true">→</span>}</h2><p>{description}</p></div></div>)}
+  </div>
+  <section class="section widgets-section" id="widgets" aria-labelledby="widgets-title">
+    <div class="container">
+      <div class="widgets-heading"><h2 id="widgets-title">GOOD THINGS.<br />WITHIN REACH.</h2><p class="section-description">Your console, on your home screen. Start, pause, reset and log without opening the app. A satisfying click. A little vibration. Everything in sync.</p></div>
+      <Widgets />
+      <p class="feature-footnote">FOUR WIDGETS. TWO SIZES. WHITE OR BLACK. TRY THEIR BUTTONS.</p>
+    </div>
+  </section>
+  <section class="section" id="receipts" aria-labelledby="receipt-title">
+    <div class="container receipt-section-layout">
+      <div class="receipt-copy"><span class="label">KEEP THE DAY.</span><h2 id="receipt-title">YOUR TIME,<br />ON PAPER.</h2><p class="section-description">Every day prints a receipt. Your tasks, to-dos, time and coins, all in one place. Share it as PNG, PDF, text or straight to WhatsApp.</p><div class="receipt-formats mono"><span>PNG</span><span>PDF</span><span>TEXT</span><span>WHATSAPP</span></div><p class="section-description">Auto-log at 23:40, in your phone’s local time. There’s still time for a manual log until 23:59.</p></div>
+      <div class="receipt-stage"><Receipt /><p class="feature-footnote">A SAMPLE DAY, PRINTED.</p></div>
+    </div>
+  </section>
+  <section class="section" aria-labelledby="days-title">
+    <div class="container">
+      <div class="days-header"><h2 id="days-title">ONE DAY<br />AT A TIME.</h2><p class="section-description">A place for the big tasks and the little things. Daily to-dos, each with a clock of their own.</p></div>
+      <div class="days-list">
+        <details class="day" open><summary><span class="day-word">MONDAY</span><span class="day-meta mono"><span data-todo-count>1 / 3 DONE</span><Icon name="plus" /></span></summary><div class="todos"><div class="todo-label mono"><span>DAILY TO-DOS</span><span>SAMPLE DAY</span></div><label class="todo"><input type="checkbox" checked /><span class="todo-name">Read 20 pages</span><span class="mono">00:24:00</span></label><label class="todo"><input type="checkbox" /><span class="todo-name">Go for a walk</span><span class="mono">00:00:00</span></label><label class="todo"><input type="checkbox" /><span class="todo-name">Make something good</span><span class="mono">00:00:00</span></label></div></details>
+        <details class="day"><summary><span class="day-word">TUESDAY</span><span class="day-meta mono"><span>A FRESH START</span><Icon name="plus" /></span></summary><p class="feature-footnote" style="padding-bottom:24px">A NEW DAY. A NEW LIST. ADD YOUR OWN TO-DOS IN THE APP.</p></details>
+        <details class="day"><summary><span class="day-word">WEDNESDAY</span><span class="day-meta mono"><span>ON YOUR TIME</span><Icon name="plus" /></span></summary><p class="feature-footnote" style="padding-bottom:24px">KEEP SHOWING UP. YOUR TIME ADDS UP.</p></details>
+      </div>
+    </div>
+  </section>
+  <section class="section" aria-labelledby="coins-title">
+    <div class="container coins-layout">
+      <div class="coins-copy"><h2 id="coins-title">SHOW UP.<br />IT ADDS UP.</h2><p class="section-description">Earn OYTT Coins for logged time, daily streaks, completed to-dos and sharing. Thirty minutes a day keeps your streak going. A 25-day streak unlocks partner rewards.</p><p class="priority-copy">Since you’re on our priority list, every deal will be first accessible to you.</p></div>
+      <div><div class="coin-slab"><div class="coin-top mono"><span>OYTT COINS</span><span class="coin-mark" aria-hidden="true">O</span></div><div class="coin-number mono">1,280</div><p class="feature-footnote">SAMPLE BALANCE / VIRTUAL COINS, NO CASH VALUE</p><div class="coin-rule"></div><div class="coin-streak"><strong>25 DAYS<span>TO GO</span></strong><p>Your first partner reward starts with a little consistency.</p></div><div class="streak-grid" role="img" aria-label="Sample: 25 days remaining in a 25-day streak">{Array.from({length: 25}, () => <span />)}</div></div><p class="feature-footnote">PARTNER REWARDS ARE SUBJECT TO AVAILABILITY.</p></div>
+    </div>
+  </section>
+  <section class="section" aria-labelledby="privacy-title"><div class="container privacy-section"><div><h2 id="privacy-title">YOUR TIME.<br />YOUR BUSINESS.</h2><p class="privacy-lines">No ads. No selling your data. No location. No contacts. Delete everything anytime.</p><p class="section-description">Sign in with Google. Track offline. Your day syncs when you’re back online.</p><a class="text-link" href="/privacy">Privacy at OYTT <Icon name="arrow" /></a></div><div class="privacy-stamp" aria-hidden="true"><span>JUST<br />YOUR<br />TIME.</span></div></div></section>
+  <section class="section" aria-labelledby="soon-title"><div class="container soon-layout"><div class="soon-copy"><h2 id="soon-title">MORE TIME.<br />MORE TO COME.</h2><p>A few things we’re working on. All in good time.</p></div><div class="soon-list">{soon.map(name => <div class="soon-row"><h3>{name}</h3><span class="mono">COMING SOON</span></div>)}</div></div></section>
+  <section class="section final-cta" aria-labelledby="cta-title"><div class="container"><h2 id="cta-title">START YOUR<br />FIRST DAY.</h2><p>Turn. Start. Log. See where your time goes.</p><PlayBadge /></div></section>
+  <script>import '../scripts/demo.js';</script>
+</Layout>

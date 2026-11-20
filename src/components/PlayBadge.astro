@@ -1,0 +1,7 @@
+---
+import { site } from '../config/site.mjs';
+const { class: className = '' } = Astro.props;
+---
+<a class:list={['play-badge', className]} href={site.play} aria-label="Get OYTT on Google Play">
+  <img src="/assets/google-play-badge.png" width="216" height="84" alt="Get it on Google Play" loading="eager" decoding="async" />
+</a>
