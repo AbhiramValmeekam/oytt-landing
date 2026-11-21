@@ -1,4 +1,39 @@
 ---
-import LegalHolding from '../components/LegalHolding.astro';
+import LegalLayout from '../layouts/LegalLayout.astro';
+import { site } from '../config/site.mjs';
 ---
-<LegalHolding title="Delete your OYTT account and data | OYTT" heading="DELETE YOUR OYTT ACCOUNT AND DATA." description="OYTT account deletion page in preparation. Contact the developer OYTT or visit support for help." />
+<LegalLayout title="Delete Your OYTT Account | OYTT" heading="Delete Your OYTT Account" description="Request deletion of your OYTT account and data by email. See what is deleted, what may be retained and the 30-day deletion timeline.">
+  <p>App: OYTT – On Your Time Too (com.oytt.logger)<br />Developer: {site.operatorName}, Kompally, Hyderabad, India</p>
+  <p>You can ask us to delete your OYTT account and all its data at any time.</p>
+
+  <h2>How to request deletion</h2>
+  <ol>
+    <li>Send an email to <a href={`mailto:${site.email}`}>{site.email}</a></li>
+    <li>Send it from the Google account you use to sign in to OYTT, so we can confirm it is yours</li>
+    <li>Subject: <span class="mono">Delete my OYTT account</span></li>
+    <li>Optional: tell us why you are leaving. It helps us improve.</li>
+  </ol>
+  <p>We will confirm your request by email and finish the deletion within 30 days.</p>
+
+  <h2>What gets deleted</h2>
+  <ul>
+    <li>Your account and sign-in record</li>
+    <li>All tasks and to-dos</li>
+    <li>All time sessions and receipt history</li>
+    <li>All OYTT Coins and reward progress (coins cannot be recovered once deleted)</li>
+    <li>Your synced timer and widget state</li>
+  </ul>
+
+  <h2>What may be kept</h2>
+  <ul>
+    <li>Records we must keep by law (if any), kept only for as long as the law requires</li>
+    <li>Copies in encrypted backups, which are overwritten automatically within 30 days</li>
+  </ul>
+
+  <h2>Data on your phone</h2>
+  <p>The data saved on your phone is removed when you uninstall OYTT, or when you go to Settings → Apps → OYTT → Storage → Clear data.</p>
+
+  <h2>Just want to stop?</h2>
+  <p>You can sign out or uninstall the app at any time. Your account and coins stay safe until you ask us to delete them.</p>
+  <p>Questions? Email <a href={`mailto:${site.email}`}>{site.email}</a></p>
+</LegalLayout>

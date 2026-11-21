@@ -7,7 +7,7 @@ await mkdir('reports/lighthouse',{recursive:true});
 const chrome = await launch({chromePath,chromeFlags:['--headless','--no-sandbox','--disable-dev-shm-usage']});
 const summary = [];
 try {
- for (const route of (process.env.OYTT_AUDIT_ROUTE ? [process.env.OYTT_AUDIT_ROUTE] : ['/', '/support'])) {
+ for (const route of (process.env.OYTT_AUDIT_ROUTE ? [process.env.OYTT_AUDIT_ROUTE] : ['/', '/support', '/privacy'])) {
   for (const formFactor of ['mobile','desktop']) {
     const options = {port:chrome.port,output:['html','json'],logLevel:'error',onlyCategories:['performance','accessibility','best-practices','seo']};
     const config = formFactor === 'desktop' ? {extends:'lighthouse:default',settings:{formFactor:'desktop',screenEmulation:{mobile:false,width:1440,height:1000,deviceScaleFactor:1,disabled:false},throttling:{rttMs:40,throughputKbps:10240,cpuSlowdownMultiplier:1}}} : undefined;

@@ -5,8 +5,9 @@ import { site } from '../config/site.mjs';
 import displayFont from '@fontsource/roboto/files/roboto-latin-900-normal.woff2?url';
 import uiFont from '@fontsource-variable/plus-jakarta-sans/files/plus-jakarta-sans-latin-wght-normal.woff2?url';
 import monoFont from '@fontsource-variable/jetbrains-mono/files/jetbrains-mono-latin-wght-normal.woff2?url';
-const { title, description, noindex = false } = Astro.props;
-const canonical = new URL(Astro.url.pathname, site.origin).href;
+const { title, description, noindex = false, documentPage = false } = Astro.props;
+const pathname = Astro.url.pathname === '/index.html' ? '/' : Astro.url.pathname.replace(/\.html$/, '');
+const canonical = new URL(pathname, site.origin).href;
 const nav = [{ href: '/#widgets', label: 'Widgets' }, { href: '/#receipts', label: 'Receipts' }, { href: '/support', label: 'Support' }];
 ---
 <!doctype html>
@@ -18,7 +19,7 @@ const nav = [{ href: '/#widgets', label: 'Widgets' }, { href: '/#receipts', labe
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
-    <link rel="preload" href={displayFont} as="font" type="font/woff2" crossorigin />
+    {!documentPage && <link rel="preload" href={displayFont} as="font" type="font/woff2" crossorigin />}
     <link rel="preload" href={uiFont} as="font" type="font/woff2" crossorigin />
     <link rel="preload" href={monoFont} as="font" type="font/woff2" crossorigin />
     {noindex && <meta name="robots" content="noindex, follow" />}
@@ -55,7 +56,7 @@ const nav = [{ href: '/#widgets', label: 'Widgets' }, { href: '/#receipts', labe
     <header class="site-header">
       <div class="header-inner container">
         <a class="wordmark" href="/" aria-label="OYTT home"><img src="/favicon.svg" width="32" height="32" alt="" /> OYTT</a>
-        <nav class="desktop-nav" aria-label="Main navigation">{nav.map(link => <a href={link.href} aria-current={Astro.url.pathname === link.href ? 'page' : undefined}>{link.label}</a>)}</nav>
+        <nav class="desktop-nav" aria-label="Main navigation">{nav.map(link => <a href={link.href} aria-current={pathname === link.href ? 'page' : undefined}>{link.label}</a>)}</nav>
         <div class="header-actions">
           <button class="theme-toggle" type="button" aria-label="Switch to dark theme" data-theme-toggle><Icon name="moon" class="moon-icon" /><Icon name="sun" class="sun-icon" /></button>
           <details class="mobile-nav"><summary class="mono">MENU <Icon name="plus" /></summary><nav aria-label="Mobile navigation">{nav.map(link => <a href={link.href}>{link.label}</a>)}<a href={site.play}>Google Play <Icon name="arrow" /></a></nav></details>
@@ -64,8 +65,17 @@ const nav = [{ href: '/#widgets', label: 'Widgets' }, { href: '/#receipts', labe
     </header>
     <main id="main"><slot /></main>
     <footer class="site-footer">
-      <div class="container footer-top"><a class="wordmark" href="/" aria-label="OYTT home">OYTT</a><p>YOUR TIME. ON YOUR TERMS.</p><a class="footer-email" href={`mailto:${site.email}`}>{site.email}<Icon name="arrow" /></a></div>
-      <div class="container footer-bottom"><nav aria-label="Footer navigation"><a href="/privacy">Privacy</a><span aria-hidden="true">·</span><a href="/terms">Terms</a><span aria-hidden="true">·</span><a href="/delete-account">Delete account</a><span aria-hidden="true">·</span><a href="/support">Support</a><span aria-hidden="true">·</span><a href="/children">Age & privacy</a></nav><span>© {new Date().getFullYear()} OYTT. All rights reserved.</span></div>
+      <div class="container footer-inner">
+        <p class="footer-copyright">© 2026 OYTT · On Your Time Too · Kompally, Hyderabad, India</p>
+        <nav aria-label="Footer navigation">
+          <a href="/privacy" aria-current={pathname === '/privacy' ? 'page' : undefined}>Privacy</a><span aria-hidden="true">·</span>
+          <a href="/terms" aria-current={pathname === '/terms' ? 'page' : undefined}>Terms</a><span aria-hidden="true">·</span>
+          <a href="/support" aria-current={pathname === '/support' ? 'page' : undefined}>Support</a><span aria-hidden="true">·</span>
+          <a href="/delete-account" aria-current={pathname === '/delete-account' ? 'page' : undefined}>Delete Account</a><span aria-hidden="true">·</span>
+          <a href="/children" aria-current={pathname === '/children' ? 'page' : undefined}>Children's Privacy</a>
+        </nav>
+        <a class="footer-email" href={`mailto:${site.email}`}>{site.email}</a>
+      </div>
     </footer>
     <script>
       const toggle = document.querySelector('[data-theme-toggle]');

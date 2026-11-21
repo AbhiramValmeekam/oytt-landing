@@ -1,0 +1,45 @@
+.legal-page {
+  max-width: 760px;
+  padding-block: 64px 88px;
+}
+
+.legal-header { margin-bottom: 32px; }
+.legal-header::before { content: ''; display: block; width: 32px; height: 3px; margin-bottom: 24px; background: var(--accent); }
+.legal-page h1, .legal-page h2, .legal-page h3 {
+  font-family: var(--ui);
+  font-weight: 700;
+  text-transform: none;
+  letter-spacing: -.025em;
+  line-height: 1.3;
+  overflow-wrap: break-word;
+}
+.legal-page h1 { font-size: clamp(32px, 4.5vw, 48px); text-wrap: balance; }
+.legal-page h2 { margin-top: 40px; margin-bottom: 16px; font-size: 23px; }
+.legal-page h3 { margin-top: 24px; margin-bottom: 12px; font-size: 17px; letter-spacing: -.01em; }
+.legal-page .legal-meta { margin-top: 16px; font-size: 12px; line-height: 1.8; color: var(--secondary); }
+.legal-content { line-height: 1.85; overflow-wrap: anywhere; }
+.legal-content p { color: var(--ink); }
+.legal-content p + p { margin-top: 16px; }
+.legal-content ul, .legal-content ol { margin-block: 16px 20px; padding-inline-start: 1.5em; }
+.legal-content li + li { margin-top: 8px; }
+.legal-content li::marker { color: var(--accent); }
+.legal-content a { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+.legal-content a:hover { text-decoration-color: var(--accent); }
+.legal-content .faq-list { margin-top: 24px; }
+.legal-content .faq-list summary { min-height: 72px; padding-block: 20px; font-size: 16px; line-height: 1.6; }
+.legal-content .faq-list details p { padding-bottom: 24px; line-height: 1.85; }
+
+@media (max-width: 640px) {
+  .legal-page { padding-block: 40px 64px; }
+  .legal-header { margin-bottom: 28px; }
+  .legal-page h2 { margin-top: 32px; font-size: 21px; }
+}
+
+@media print {
+  .legal-page { max-width: none; padding: 0; }
+  .legal-header::before { display: none; }
+  .legal-page h1 { font-size: 28px; }
+  .legal-page h2 { break-after: avoid; font-size: 19px; }
+  .legal-page h3 { break-after: avoid; }
+  .legal-content p, .legal-content li { orphans: 3; widows: 3; }
+}

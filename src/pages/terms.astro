@@ -1,4 +1,58 @@
 ---
-import LegalHolding from '../components/LegalHolding.astro';
+import LegalLayout from '../layouts/LegalLayout.astro';
+import { site } from '../config/site.mjs';
 ---
-<LegalHolding title="Terms of Service | OYTT" heading="TERMS OF SERVICE." description="OYTT terms of service page in preparation. Contact OYTT with questions." />
+<LegalLayout title="Terms of Service | OYTT" heading="Terms of Service" description="The terms for using the OYTT app, widgets, time logs, coins and rewards, including age requirements and account responsibilities." effectiveDate={true}>
+  <p>These Terms of Service ("Terms") govern your use of the OYTT ("On Your Time Too") app, its widgets and this website (together, the "Service"). The Service is operated by {site.operatorName}, Kompally, Hyderabad, Telangana, India ("OYTT", "we", "us"). By using the Service, you agree to these Terms.</p>
+
+  <h2>1. Eligibility</h2>
+  <p>You must be at least 13 years old to use OYTT. If you are under 18, you may use OYTT only with the consent and supervision of a parent or legal guardian.</p>
+
+  <h2>2. Your account</h2>
+  <ul>
+    <li>You sign in with your Google account. You are responsible for keeping that account secure.</li>
+    <li>Give accurate information and do not impersonate anyone.</li>
+    <li>You are responsible for all activity under your account.</li>
+  </ul>
+
+  <h2>3. Using OYTT</h2>
+  <p>OYTT helps you track time on your tasks, manage to-dos, print time receipts and earn OYTT Coins. You agree not to:</p>
+  <ul>
+    <li>Misuse, hack, reverse-engineer or disrupt the Service or its servers</li>
+    <li>Use bots, scripts, clock changes or other tricks to earn coins unfairly</li>
+    <li>Use the Service for anything unlawful</li>
+  </ul>
+
+  <h2>4. OYTT Coins and rewards</h2>
+  <ul>
+    <li>OYTT Coins are a loyalty reward for using the app. They have no cash value, cannot be bought, sold or transferred, and cannot be exchanged for money.</li>
+    <li>Coins are earned under the rules shown in the app (for example: time tracked, streaks, completed to-dos, sharing a receipt, adding a widget). We may change these rules in future.</li>
+    <li>Rewards and partner deals, when available, are subject to availability and to the partner's own terms. Some rewards unlock only after a set streak (for example, 25 days).</li>
+    <li>If we find fraud or abuse, we may remove coins or suspend the account.</li>
+    <li>If your account is deleted, its coins are permanently lost.</li>
+  </ul>
+
+  <h2>5. Your content</h2>
+  <p>Your tasks, to-dos and time logs belong to you. You give us permission to store, process and sync them only so we can provide the Service. Receipts you share are shared by you, at your choice.</p>
+
+  <h2>6. Our content</h2>
+  <p>The OYTT name, logo, app design, widgets, receipt design and all other app content belong to OYTT and are protected by law. You may not copy or reuse them without our written permission.</p>
+
+  <h2>7. Availability</h2>
+  <p>The Service is provided "as is" and "as available". We do not guarantee it will always be uninterrupted, error-free or that data will never be lost. Time logs are for personal use and should not be used as official, legal or payroll records.</p>
+
+  <h2>8. Limitation of liability</h2>
+  <p>To the fullest extent allowed by law, OYTT is not liable for any indirect, incidental or consequential loss arising from your use of the Service. Our total liability for any claim is limited to ₹1,000 (one thousand rupees).</p>
+
+  <h2>9. Ending your use</h2>
+  <p>You can stop using OYTT at any time and ask us to delete your account (see <a href="/delete-account">/delete-account</a>). We may suspend or end access for accounts that break these Terms.</p>
+
+  <h2>10. Changes</h2>
+  <p>We may update these Terms. If you keep using OYTT after changes take effect, you accept the updated Terms. We will tell you about important changes in the app.</p>
+
+  <h2>11. Governing law</h2>
+  <p>These Terms are governed by the laws of India. Any dispute will be subject to the exclusive jurisdiction of the courts in Hyderabad, Telangana.</p>
+
+  <h2>12. Contact</h2>
+  <p>OYTT, Kompally, Hyderabad, Telangana {site.postalCode}, India<br />Email: <a href={`mailto:${site.email}`}>{site.email}</a></p>
+</LegalLayout>
