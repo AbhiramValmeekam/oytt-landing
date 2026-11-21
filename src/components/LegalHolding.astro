@@ -1,7 +1,0 @@
----
-import Layout from '../layouts/Layout.astro';
-import Icon from './Icon.astro';
-import { site } from '../config/site.mjs';
-const { title, description, heading } = Astro.props;
----
-<Layout title={title} description={description} noindex={true}><div class="container service-page holding-page"><span class="label">PAGE IN PREPARATION</span><h1>{heading}</h1><div class="notice"><p>We’re preparing this page. For now, contact OYTT at <a href={`mailto:${site.email}`}>{site.email}</a>.</p></div><a class="button" href={`mailto:${site.email}`}><Icon name="mail" /> CONTACT OYTT</a><br /><a class="text-link" href="/support">Visit support <Icon name="arrow" /></a></div></Layout>

@@ -1,17 +1,35 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import LegalLayout from '../layouts/LegalLayout.astro';
 import Icon from '../components/Icon.astro';
 import { site } from '../config/site.mjs';
 const faqs = [
-  ['How do I add a widget?', 'Touch and hold an empty space on your Android home screen, then choose Widgets. Find OYTT and drag the 4×2 Console or 2×2 Mini onto your screen. Pick White or Black. The exact menu may differ on your phone.'],
-  ['Why does the widget clock show a few seconds after reset?', 'This issue is fixed in the latest version. Update OYTT from Google Play, then try resetting again. If it still happens, email us with your phone model, Android version and OYTT version.'],
-  ['What happens at 23:40?', 'OYTT automatically logs your day at 23:40 in your phone’s local time. You can still log manually until 23:59. After a phone restart, OYTT re-arms the nightly auto-log.'],
-  ['How do coins work?', 'You earn OYTT Coins for logged time, daily streaks, completed to-dos and sharing. Log at least 30 minutes a day to keep your streak. A 25-day streak unlocks partner rewards, subject to availability. Coins are a virtual loyalty feature. They have no cash value and cannot be transferred or exchanged for money.'],
-  ['How do I delete my account?', 'In OYTT, go to Settings → Account → Delete account and confirm. You can also email oytt.official@gmail.com from the Google email you use to sign in, with the subject “Delete my OYTT account”. Email requests are completed within 30 days.'],
-  ['Does it work offline?', 'Yes. Track time and use your daily to-dos offline. OYTT stores your app data on your device and syncs it when you are online again. Google Sign-In needs an internet connection.'],
-  ['Is it free?', 'Yes. OYTT is free. OYTT Pro is coming soon. Any future paid features will have separate terms and use Google Play billing.'],
+  ["The widget shows the wrong time or doesn't update.", 'Open the OYTT app once. It syncs with the widget. If it still looks wrong, remove the widget and add it again from your home screen.'],
+  ['My time was logged automatically at 23:40.', "That's by design. At 23:40 (your phone's time), OYTT logs any running clock for you. You can still log by hand until 23:59. At midnight, a new day begins."],
+  ['Only one clock runs at a time. Is that right?', 'Yes. Each task has its own clock. When you start a different task, the one that was running pauses.'],
+  ['I changed phones. Will my data come back?', 'Yes. Sign in with the same Google account and your tasks, time logs and coins will sync back.'],
+  ["I can't sign in.", 'Check your internet connection and make sure Google Play Services is up to date. If it still fails, email us.'],
+  ['How do I earn OYTT Coins?', 'By tracking time, keeping your streak, finishing to-dos, sharing your daily receipt (once a day) and adding your first widget. Coins have no cash value and are used for rewards inside the app.'],
+  ['When do rewards unlock?', "Rewards unlock after a 25-day streak. Since you're on our priority list, every deal will be first accessible to you."],
+  ['How do I share my receipt?', 'Open a day → Receipt → choose WhatsApp, Share Text, PNG or PDF.'],
 ];
 ---
-<Layout title="Support & FAQ | OYTT" description="Help with OYTT widgets, auto-log, coins, offline tracking and account deletion. Contact oytt.official@gmail.com.">
-  <div class="container service-page"><span class="label">A LITTLE HELP.</span><h1>LET’S SORT<br />IT OUT.</h1><p class="service-intro">A few answers to keep your day moving.</p><div class="faq-list">{faqs.map(([question, answer]) => <details><summary>{question}<Icon name="plus" /></summary><p>{answer}</p></details>)}</div><div class="contact-slab"><div><h2>STILL NEED A HAND?</h2><p>Email us. A real conversation starts there.</p></div><a class="button" href={`mailto:${site.email}`}><Icon name="mail" /> EMAIL OYTT</a></div></div>
-</Layout>
+<LegalLayout title="Support | OYTT" heading="Support" description="Contact OYTT support and get help with widgets, time tracking, Google Sign-In, coins, receipts and account deletion.">
+  <p>Need help with OYTT? We're here.</p>
+  <p>Email: <a href={`mailto:${site.email}`}>{site.email}</a><br />We usually reply within 2 working days.</p>
+  <p>To help us fix your issue faster, please include:</p>
+  <ul>
+    <li>Your phone model and Android version</li>
+    <li>The OYTT version (Settings → About)</li>
+    <li>What happened, and a screenshot if possible</li>
+  </ul>
+
+  <h2>Quick help</h2>
+  <div class="faq-list">
+    {faqs.map(([question, answer]) => <details><summary>Q: {question}<Icon name="plus" /></summary><p>A: {answer}</p></details>)}
+    <details><summary>Q: How do I delete my account?<Icon name="plus" /></summary><p>A: See <a href="/delete-account">/delete-account</a>.</p></details>
+  </div>
+
+  <h2>Report a problem or abuse</h2>
+  <p>Email <a href={`mailto:${site.email}`}>{site.email}</a> with the subject "Report".</p>
+  <p>OYTT, Kompally, Hyderabad, Telangana {site.postalCode}, India</p>
+</LegalLayout>

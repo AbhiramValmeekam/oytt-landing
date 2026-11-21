@@ -1,0 +1,14 @@
+---
+import Layout from './Layout.astro';
+import '../styles/legal.css';
+const { title, description, heading, effectiveDate = false } = Astro.props;
+---
+<Layout title={title} description={description} documentPage={true}>
+  <article class="container legal-page">
+    <header class="legal-header">
+      <h1>{heading}</h1>
+      {effectiveDate && <p class="legal-meta mono">Effective date: <time datetime="2026-11-21">21 November 2026</time></p>}
+    </header>
+    <div class="legal-content"><slot /></div>
+  </article>
+</Layout>

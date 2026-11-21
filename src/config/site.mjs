@@ -3,6 +3,8 @@ export const site = {
   origin: 'https://oytt-8435e.web.app',
   email: 'oytt.official@gmail.com',
   play: 'https://play.google.com/store/apps/details?id=com.oytt.logger',
-  agePolicy: '16+ with country-specific consent requirements',
-  legalReady: false,
+  operatorName: 'OYTT',
+  postalCode: '500010',
+  agePolicy: '13+; users under 18 require parent or guardian consent and supervision',
+  legalReady: true,
 };

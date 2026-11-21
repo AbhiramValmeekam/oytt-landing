@@ -2,16 +2,15 @@
 
 ## Before publishing
 
-- [ ] Write and review `/privacy`, `/terms`, `/delete-account` and `/children`. **Legal copy was deferred at your request.** These routes are holding pages with `noindex` and are excluded from the sitemap. They are not ready to submit to Google Play.
-- [ ] Add `[FILL]` legal owner/business name and city/country.
-- [ ] Confirm `[FILL]` Google's actual encrypted backup-retention window; do not assume 60 days.
-- [ ] Choose `[DECIDE]` governing law and court jurisdiction.
-- [ ] Implement and verify the chosen **16+ with country-specific consent requirements** policy in the app and Play Console. This age choice alone does not resolve all country-specific obligations.
-- [ ] Verify the in-app deletion flow, email request process, immediate cloud deletion and 30-day request completion described in the master brief.
+- [x] Implement `/privacy`, `/terms`, `/delete-account`, `/support` and `/children` using the user's final text dated 21 November 2026. All five are public static pages, indexable, and included in the sitemap.
+- [x] Use the user-confirmed operator name **OYTT** and address **Kompally, Hyderabad, Telangana 500010, India**. The officer's name is omitted at the user's request. No public text contains bracket placeholders.
+- [x] Include all five destinations and the supplied copyright/address line in every page's footer; make every email address a mailto link.
+- [ ] Verify the **13+** requirement and parent/guardian consent for users under 18 in the Android app and Play Console.
+- [ ] Confirm the app and service match the supplied privacy, permissions, storage, backup retention and 30-day deletion statements. The website describes the email deletion process; it does not implement Android or Firebase deletion.
 - [ ] Replace or approve the **provisional orange folded mark**. The original OYTT logo was not provided. Regenerate the favicons and OG image after replacing `public/favicon.svg`.
 - [ ] Confirm the Google Play listing is published and the app claims match the release.
-- [ ] Choose `[DECIDE]` a custom domain, if wanted. The configured default is `https://oytt-8435e.web.app`.
-- [ ] Set `legalReady: true` in `src/config/site.mjs` only after completing and reviewing all legal routes, and remove their holding-page `noindex` metadata. This flag enables their sitemap entries; it does not write policies.
+- [ ] Choose a custom domain, if wanted. The configured default is `https://oytt-8435e.web.app`.
+- [x] Set `legalReady: true` in `src/config/site.mjs` after completing the documents. The release check also rejects unresolved operator names and invalid postal PINs.
 
 ## Run locally
 
@@ -39,9 +38,9 @@ npm run test:browser
 npm run audit:lighthouse
 ```
 
-Browser checks cover all routes in light and dark, ten widths from 360 to 1440 including breakpoint boundaries, axe accessibility, keyboard controls, timer task switching, widgets, todos, theme persistence, blocked storage, no cookies, no external requests, support accordions, real 404 handling and 200% text enlargement. Lighthouse audits the landing and support pages on mobile and desktop and exits unsuccessfully if any category scores below 95. Legal holding pages and the 404 intentionally carry `noindex`; they are excluded from SEO scoring. Reports and screenshots are written to ignored `reports/`.
+Unit tests cover the timer model and release validation, including unresolved contact fields and the approved omission of an officer name. Browser checks cover all routes in light and dark, ten widths from 360 to 1440 including breakpoint boundaries, axe accessibility, direct access to all five documents with JavaScript disabled, footer destinations, every email link, keyboard controls, timer task switching, widgets, todos, theme persistence, blocked storage, no cookies, no external requests, support accordions, real 404 handling and 200% text enlargement. Lighthouse audits the landing, support and privacy pages on mobile and desktop and exits unsuccessfully if any category scores below 95. Set `OYTT_AUDIT_ROUTE=/delete-account` to audit another page. Only the 404 intentionally carries `noindex`. Reports and screenshots are written to ignored `reports/`.
 
-Measured landing and support scores: **100 performance / 100 accessibility / 100 best practices / 100 SEO**, on both mobile and desktop, with CLS 0. See [verification notes](docs/verification.md).
+See [verification notes](docs/verification.md) for the measured scores and results for the current documents.
 
 Scripts use an installed Chrome/Edge on Windows, or Chrome/Chromium on Linux. Set `OYTT_CHROME_PATH` to override the browser path. If no browser is installed, run `npx playwright install chromium` for browser tests. Lighthouse needs Chrome. Set `OYTT_BASE_URL` to override the preview URL.
 
@@ -73,7 +72,7 @@ npm run build
 firebase deploy --only hosting --project oytt-8435e
 ```
 
-`check:release` currently fails intentionally because the legal pages are deferred. No deployment has been performed. Inspect the existing Firebase site before publishing: the command replaces its currently hosted site.
+`check:release` validates the legal-ready flag, operator name and six-digit PIN; it does not replace the build, browser checks or app verification items above. Inspect the existing Firebase site before publishing: the command replaces its currently hosted site.
 
 For a custom domain, update `site.origin`, `astro.config.mjs`, `public/robots.txt` and `public/site.webmanifest`, configure Firebase's domain, and rebuild.
 
@@ -82,18 +81,21 @@ For a custom domain, update `site.origin`, `astro.config.mjs`, `public/robots.tx
 | Field | Value |
 |---|---|
 | Privacy policy | https://oytt-8435e.web.app/privacy |
+| Terms of service | https://oytt-8435e.web.app/terms |
 | Account deletion | https://oytt-8435e.web.app/delete-account |
+| Support | https://oytt-8435e.web.app/support |
+| Children's privacy | https://oytt-8435e.web.app/children |
 | Website | https://oytt-8435e.web.app/ |
 | Support email | oytt.official@gmail.com |
 
-The two legal URLs above become suitable only after their full pages are written and reviewed.
+The five documents are implemented locally. Deploy the built site before submitting the hosted URLs to Google Play.
 
 ## Source map
 
 - `src/pages/`: seven routes plus the sitemap.
-- `src/components/`: console, widgets, receipt, badge, icons, legal holding page.
-- `src/layouts/Layout.astro`: shared header/footer, SEO and theme handling.
-- `src/lib/console.mjs`: timestamp-based timer model; only one active task.
+- `src/components/`: console, widgets, receipt, badge and icons.
+- `src/layouts/`: shared header/footer, SEO, theme handling and document layout.
+- `src/lib/`: timestamp-based timer model and release configuration validation.
 - `src/scripts/demo.js`: keyboard and button interactions, live widget state.
 - `src/styles/`: exact brand tokens, responsive layouts, focus and print styles.
 - `scripts/`: browser checks, asset generation, Lighthouse and release checklist.

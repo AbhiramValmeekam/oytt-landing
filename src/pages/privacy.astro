@@ -1,4 +1,82 @@
 ---
-import LegalHolding from '../components/LegalHolding.astro';
+import LegalLayout from '../layouts/LegalLayout.astro';
+import { site } from '../config/site.mjs';
 ---
-<LegalHolding title="Privacy Policy | OYTT" heading="PRIVACY AT OYTT." description="OYTT privacy policy page in preparation. Contact OYTT for privacy questions." />
+<LegalLayout title="Privacy Policy | OYTT" heading="Privacy Policy" description="How OYTT collects, uses, stores and protects your account information, tasks and time logs, and how to exercise your privacy rights." effectiveDate={true}>
+  <p>This Privacy Policy explains how OYTT ("On Your Time Too", "we", "us") collects, uses and protects your information when you use the OYTT Android app (package: com.oytt.logger), its home-screen widgets and this website.</p>
+  <p>OYTT is operated by {site.operatorName}, Kompally, Hyderabad, Telangana, India.<br />Contact: <a href={`mailto:${site.email}`}>{site.email}</a></p>
+
+  <h2>1. Information we collect</h2>
+  <h3>a) Account information (from Google Sign-In)</h3>
+  <p>When you sign in with Google, we receive your name, email address, profile photo and a unique account ID. We never see or store your Google password.</p>
+  <h3>b) Information you create in the app</h3>
+  <ul>
+    <li>Tasks you add (names and colours)</li>
+    <li>To-dos you create and mark done</li>
+    <li>Time sessions: start time, end time, duration, and whether a session was logged from the app or a widget</li>
+    <li>OYTT Coins you earn, with the reason and date for each</li>
+    <li>Your current timer state, so the app and widgets stay in sync</li>
+  </ul>
+  <h3>c) Device and app settings</h3>
+  <p>Sound and haptic preferences, theme, and which onboarding steps you have finished. These are stored on your device.</p>
+  <p>We do NOT collect: your location, contacts, photos, files, microphone or camera data, call logs, SMS or browsing history. OYTT has no ads, and we do not use third-party advertising or tracking SDKs.</p>
+
+  <h2>2. How we use your information</h2>
+  <ul>
+    <li>To sign you in and keep your account secure</li>
+    <li>To save your tasks, time logs and coins, and sync them across your devices</li>
+    <li>To make receipts, streaks and coin rewards</li>
+    <li>To show partner rewards and deals inside the app (when they become available)</li>
+    <li>To reply to you when you contact us</li>
+  </ul>
+  <p>We do not sell, rent or trade your personal information.</p>
+
+  <h2>3. Where your data is stored</h2>
+  <ul>
+    <li>On your device, in a local database, so the app works offline.</li>
+    <li>In Google Firebase (Firebase Authentication and Cloud Firestore, run by Google LLC), so your data is backed up and synced. Data sent to Firebase is encrypted in transit and at rest. Google may process it on servers outside India. Google's privacy policy: <a href="https://policies.google.com/privacy">https://policies.google.com/privacy</a></li>
+  </ul>
+  <p>Each account's data can be read and written only by that signed-in account.</p>
+
+  <h2>4. Sharing</h2>
+  <p>We share data only:</p>
+  <ul>
+    <li>With Google Firebase, which stores and runs the service for us</li>
+    <li>When you choose to share a receipt (as an image, PDF or text) through WhatsApp or any other app. You decide what is shared and with whom.</li>
+    <li>When the law requires it, or to protect the rights and safety of OYTT and its users</li>
+  </ul>
+
+  <h2>5. Permissions the app uses</h2>
+  <ul>
+    <li>Internet: to sign in and sync your data</li>
+    <li>Vibrate: for haptic feedback on taps</li>
+    <li>Run at startup: so widgets and the 23:40 auto-log keep working after your phone restarts</li>
+  </ul>
+
+  <h2>6. Data retention</h2>
+  <p>We keep your data for as long as your account is active. When you ask us to delete your account, we delete your account and its data within 30 days (see <a href="/delete-account">/delete-account</a>).</p>
+
+  <h2>7. Your rights</h2>
+  <p>Under India's Digital Personal Data Protection Act, 2023 and other laws that apply, you can:</p>
+  <ul>
+    <li>Access the personal data we hold about you</li>
+    <li>Correct inaccurate data</li>
+    <li>Ask us to delete your account and data</li>
+    <li>Withdraw consent by deleting your account</li>
+    <li>Raise a complaint with our Grievance Officer</li>
+  </ul>
+  <p>To use any of these rights, email <a href={`mailto:${site.email}`}>{site.email}</a> from the Google account you use with OYTT.</p>
+
+  <h2>8. Children</h2>
+  <p>OYTT is not directed at children under 13. See <a href="/children">/children</a> for details.</p>
+
+  <h2>9. Security</h2>
+  <p>We use industry-standard measures to protect your data, including encrypted connections, Google's secure sign-in and per-account access rules. No method of storage or transfer is 100% secure, but we work to protect your information.</p>
+
+  <h2>10. Changes to this policy</h2>
+  <p>We may update this policy from time to time. When we do, we will change the effective date above and, for important changes, tell you in the app.</p>
+
+  <h2>11. Grievance Officer / Contact</h2>
+  <p>OYTT, Kompally, Hyderabad, Telangana {site.postalCode}, India<br />Email: <a href={`mailto:${site.email}`}>{site.email}</a></p>
+  <p>We aim to reply within 7 days and to resolve complaints within 30 days.</p>
+</LegalLayout>

@@ -6,7 +6,7 @@
 
 :root {
   --page: #fff; --surface: #fff; --ink: #111; --muted: #888; --secondary: #646464;
-  --line: #eaeaea; --border: #e5e5e5; --accent: #ff5500; --pill: #0a0a0a;
+  --line: #eaeaea; --border: #e5e5e5; --accent: #FF5A1F; --pill: #0a0a0a;
   --inner: #242424; --lime: #c6df38; --paper: #fbfaf6; --stage: #ededed;
   --subtle: #f8f8f8; --ui: 'Plus Jakarta Sans Variable', sans-serif;
   --mono: 'JetBrains Mono Variable', monospace; --display: 'Roboto', sans-serif;
@@ -58,14 +58,13 @@ p { color: var(--secondary); }
 [data-theme='dark'] .sun-icon { display: inline-flex; }
 .mobile-nav { display: none; }
 .site-footer { border-top: 1px solid var(--line); padding-block: 42px 26px; }
-.footer-top { display: flex; align-items: center; gap: 32px; }
-.footer-top p { font-family: var(--mono); font-size: 11px; letter-spacing: .08em; }
-.footer-email { display: inline-flex; align-items: center; gap: 10px; margin-left: auto; font-size: 13px; min-height: 44px; max-width: 100%; overflow-wrap: anywhere; }
+.footer-inner { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+.footer-copyright { font-size: 13px; line-height: 1.8; }
+.footer-email { display: inline-flex; align-items: center; font-size: 13px; min-height: 44px; max-width: 100%; overflow-wrap: anywhere; }
 .footer-email:hover { text-decoration: underline; }
-.footer-bottom { display: flex; justify-content: space-between; align-items: center; gap: 30px; margin-top: 34px; color: var(--secondary); font-size: 11px; }
-.footer-bottom nav { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; }
-.footer-bottom nav a { display: inline-flex; align-items: center; min-height: 44px; }
-.footer-bottom a:hover { text-decoration: underline; }
+.footer-inner nav { display: flex; align-items: center; flex-wrap: wrap; column-gap: 12px; color: var(--secondary); font-size: 13px; }
+.footer-inner nav a { display: inline-flex; align-items: center; min-height: 44px; }
+.footer-inner nav a:hover, .footer-inner nav a[aria-current] { text-decoration: underline; text-underline-offset: 4px; }
 .play-badge { display: inline-block; width: 216px; margin-left: -12px; border-radius: 8px; }
 .play-badge img { width: 216px; height: 84px; object-fit: contain; }
 .play-badge:hover { transform: translateY(-2px); }
@@ -88,11 +87,6 @@ summary::-webkit-details-marker { display: none; }
 .contact-slab { display: flex; justify-content: space-between; align-items: center; gap: 28px; border: 1px solid var(--border); border-radius: 22px; padding: 32px; margin-top: 64px; }
 .contact-slab h2 { font-size: 30px; }
 .contact-slab p { margin-top: 10px; font-size: 14px; }
-.holding-page { max-width: 72ch; }
-.holding-page h1 { max-width: none; font-size: clamp(44px, 6vw, 72px); }
-.holding-page .notice { border-top: 1px solid var(--line); margin: 40px 0; padding-top: 28px; line-height: 1.8; }
-.holding-page .notice p + p { margin-top: 20px; }
-.holding-page .notice a { text-decoration: underline; }
 .not-found h1 { font-size: clamp(120px, 22vw, 240px); color: var(--accent); }
 .not-found h2 { font-size: 36px; margin-bottom: 20px; }
 
@@ -100,8 +94,6 @@ summary::-webkit-details-marker { display: none; }
   .container { width: calc(100% - 64px); }
   .section { padding-block: 80px; }
   .header-inner { height: 80px; }
-  .footer-top { gap: 24px; }
-  .footer-top p { display: none; }
 }
 @media (min-width: 641px) and (max-width: 800px) {
   .desktop-nav { display: none; }
@@ -127,10 +119,7 @@ summary::-webkit-details-marker { display: none; }
   .mobile-nav[open] summary .icon { transform: rotate(45deg); }
   .mobile-nav nav { position: absolute; z-index: 5; right: 0; top: 54px; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 12px; width: 200px; }
   .mobile-nav nav a { display: flex; align-items: center; justify-content: space-between; padding: 12px; font-size: 14px; }
-  .footer-top { align-items: flex-start; flex-direction: column; gap: 20px; }
-  .footer-email { margin-left: 0; }
-  .footer-bottom { flex-direction: column; align-items: flex-start; gap: 18px; margin-top: 20px; }
-  .footer-bottom nav { gap: 8px; }
+  .footer-inner nav { column-gap: 8px; }
   .service-page { padding-block: 54px 72px; }
   .faq-list summary { font-size: 15px; min-height: 80px; }
   .faq-list details p { padding-right: 0; font-size: 15px; }

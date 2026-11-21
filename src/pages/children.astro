@@ -1,4 +1,28 @@
 ---
-import LegalHolding from '../components/LegalHolding.astro';
+import LegalLayout from '../layouts/LegalLayout.astro';
+import { site } from '../config/site.mjs';
 ---
-<LegalHolding title="Age & Children’s Privacy | OYTT" heading="AGE & PRIVACY." description="OYTT age and children's privacy notice in preparation. Contact OYTT with questions." />
+<LegalLayout title="Age Requirements & Children's Privacy | OYTT" heading="Age Requirements & Children's Privacy" description="OYTT's 13+ age requirements, privacy protections for young users, and how parents or guardians can request access, correction or deletion." effectiveDate={true}>
+  <p>OYTT is a productivity and time-tracking app for teens and adults. It is not directed at children under 13.</p>
+
+  <h2>Age requirements</h2>
+  <ul>
+    <li>You must be 13 or older to create an OYTT account.</li>
+    <li>Users aged 13 to 17 should use OYTT only with the knowledge and consent of a parent or guardian, as required by India's Digital Personal Data Protection Act, 2023.</li>
+  </ul>
+
+  <h2>What we do to protect young users</h2>
+  <ul>
+    <li>OYTT has no ads, no in-app purchases, no chat, and no way to contact other users.</li>
+    <li>We collect only what the app needs to work (see <a href="/privacy">/privacy</a>). We do not collect location, contacts, photos or other sensitive data.</li>
+    <li>We do not use personal data for behavioural tracking or targeted advertising.</li>
+    <li>OYTT Coins cannot be bought and have no cash value.</li>
+  </ul>
+
+  <h2>If a child under 13 has used OYTT</h2>
+  <p>If you are a parent or guardian and believe your child under 13 has created an account, email <a href={`mailto:${site.email}`}>{site.email}</a> with the account's email address. We will delete the account and all its data within 30 days.</p>
+
+  <h2>Parents' rights</h2>
+  <p>Parents or guardians of users under 18 can ask to see, correct or delete their child's data by emailing <a href={`mailto:${site.email}`}>{site.email}</a>.</p>
+  <p>Contact: OYTT, Kompally, Hyderabad, Telangana {site.postalCode}, India · <a href={`mailto:${site.email}`}>{site.email}</a></p>
+</LegalLayout>
