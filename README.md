@@ -9,7 +9,7 @@
 - [ ] Confirm the app and service match the supplied privacy, permissions, storage, backup retention and 30-day deletion statements. The website describes the email deletion process; it does not implement Android or Firebase deletion.
 - [ ] Replace or approve the **provisional orange folded mark**. The original OYTT logo was not provided. Regenerate the favicons and OG image after replacing `public/favicon.svg`.
 - [ ] Confirm the Google Play listing is published and the app claims match the release.
-- [ ] Choose a custom domain, if wanted. The configured default is `https://oytt-8435e.web.app`.
+- [ ] Choose a custom domain, if wanted. The configured site is `https://oytt-landing.vercel.app`.
 - [x] Set `legalReady: true` in `src/config/site.mjs` after completing the documents. The release check also rejects unresolved operator names and invalid postal PINs.
 
 ## Run locally
@@ -56,7 +56,20 @@ npm run build
 
 Google Play badge source: https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png. Preserve it unchanged, including its clear space. Roboto, Plus Jakarta Sans, JetBrains Mono and Courier Prime are self-hosted via Fontsource under their included open-font licences. Interface icons are Tabler Icons (MIT).
 
-## Firebase Hosting
+## Vercel Hosting
+
+The production site is `https://oytt-landing.vercel.app`, with automatic deployments from `main`. Use the Astro build command `npm run build` and output directory `dist`.
+
+Astro emits `privacy.html`, `terms.html` and the other page files. `vercel.json` enables clean URLs so `/privacy`, `/terms`, `/delete-account`, `/support` and `/children` resolve to those files, matching the local preview. Unknown paths still return the custom 404 page. Canonicals and the sitemap use the Vercel domain.
+
+After deployment, verify the actual host as well as the local build:
+
+```powershell
+$env:OYTT_BASE_URL = 'https://oytt-landing.vercel.app'
+npm run test:browser
+```
+
+## Firebase Hosting (optional)
 
 Configuration is included for existing project `oytt-8435e`; `dist` is the hosting directory. No SPA catch-all rewrite is used: real static routes and a custom 404 are preserved. Hashed Astro assets have immutable cache headers.
 
@@ -74,21 +87,21 @@ firebase deploy --only hosting --project oytt-8435e
 
 `check:release` validates the legal-ready flag, operator name and six-digit PIN; it does not replace the build, browser checks or app verification items above. Inspect the existing Firebase site before publishing: the command replaces its currently hosted site.
 
-For a custom domain, update `site.origin`, `astro.config.mjs`, `public/robots.txt` and `public/site.webmanifest`, configure Firebase's domain, and rebuild.
+For another host or a custom domain, update `site.origin`, `astro.config.mjs` and `public/robots.txt`, configure the hosting provider's domain, and rebuild.
 
 ## Google Play Console URLs after launch
 
 | Field | Value |
 |---|---|
-| Privacy policy | https://oytt-8435e.web.app/privacy |
-| Terms of service | https://oytt-8435e.web.app/terms |
-| Account deletion | https://oytt-8435e.web.app/delete-account |
-| Support | https://oytt-8435e.web.app/support |
-| Children's privacy | https://oytt-8435e.web.app/children |
-| Website | https://oytt-8435e.web.app/ |
+| Privacy policy | https://oytt-landing.vercel.app/privacy |
+| Terms of service | https://oytt-landing.vercel.app/terms |
+| Account deletion | https://oytt-landing.vercel.app/delete-account |
+| Support | https://oytt-landing.vercel.app/support |
+| Children's privacy | https://oytt-landing.vercel.app/children |
+| Website | https://oytt-landing.vercel.app/ |
 | Support email | oytt.official@gmail.com |
 
-The five documents are implemented locally. Deploy the built site before submitting the hosted URLs to Google Play.
+Verify the five hosted documents after a successful Vercel deployment before submitting their URLs to Google Play.
 
 ## Source map
 

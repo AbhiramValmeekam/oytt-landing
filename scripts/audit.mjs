@@ -23,7 +23,7 @@ try {
       assert.ok(response.status() < 400 || route === '/404', `Route failed ${route}: ${response.status()}`);
       assert.ok(await page.title(), `${route} title`);
       assert.equal(await page.locator('h1').count(), 1, `${route} h1`);
-      assert.equal(await page.locator('link[rel="canonical"]').getAttribute('href'), `https://oytt-8435e.web.app${route}`, `${route} canonical uses the public route`);
+      assert.equal(await page.locator('link[rel="canonical"]').getAttribute('href'), `https://oytt-landing.vercel.app${route}`, `${route} canonical uses the public route`);
       assert.equal(await page.locator('html').getAttribute('data-theme'), theme);
       assert.deepEqual(await page.locator('.site-footer nav a').evaluateAll(links => links.map(link => link.getAttribute('href'))), footerRoutes, `${route} footer destinations`);
       const emailOccurrences = await page.locator('body').evaluate(body => (body.textContent.match(/oytt\.official@gmail\.com/g) || []).length);

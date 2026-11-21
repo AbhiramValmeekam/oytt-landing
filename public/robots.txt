@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://oytt-8435e.web.app/sitemap.xml
+Sitemap: https://oytt-landing.vercel.app/sitemap.xml

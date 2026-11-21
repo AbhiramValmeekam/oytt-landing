@@ -1,6 +1,6 @@
 export const site = {
   name: 'OYTT',
-  origin: 'https://oytt-8435e.web.app',
+  origin: 'https://oytt-landing.vercel.app',
   email: 'oytt.official@gmail.com',
   play: 'https://play.google.com/store/apps/details?id=com.oytt.logger',
   operatorName: 'OYTT',

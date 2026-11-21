@@ -1,6 +1,6 @@
 import { defineConfig } from 'astro/config';
 export default defineConfig({
-  site: 'https://oytt-8435e.web.app',
+  site: 'https://oytt-landing.vercel.app',
   output: 'static',
   trailingSlash: 'never',
   build: { format: 'file' },
